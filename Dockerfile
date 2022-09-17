@@ -1,15 +1,19 @@
-FROM golang:1.19.1-alpine3.16
+FROM golang:1.19.1-bullseye as base
 
 WORKDIR /app
 
-COPY go.mod go.sum ./
-
-RUN go mod download
-
 COPY . .
 
-RUN go install github.com/osoriojuan/go-integration-grcp
+RUN go mod download
+RUN go mod verify
+
+
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /main .
+
+FROM gcr.io/distroless/static-debian11
+
+COPY --from=base /main .
 
 EXPOSE 8080
 
-CMD go run main.go
+CMD ["./main"]

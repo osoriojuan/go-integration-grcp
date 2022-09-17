@@ -1,0 +1,10 @@
+package constants
+
+type CurrencyType uint8
+
+const (
+	CLP CurrencyType = iota + 1
+	USD              = "USD"
+	EUR              = "EUR"
+	JPY              = "JPY"
+)

@@ -35,6 +35,6 @@ func ConfigureRoutesAvailables() {
 }
 
 func Serve() {
-	log.Println("Runing router...")
+	log.Println("Running router...")
 	router.Run()
 }

@@ -12,5 +12,5 @@ func main() {
 	handlers.StartDefaultRouter()
 	handlers.ConfigureRoutesAvailables()
 	handlers.Serve()
-	fmt.Println("Successfully started.")
+	
 }
